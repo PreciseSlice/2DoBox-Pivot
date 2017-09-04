@@ -2,10 +2,12 @@ body {
   margin: auto;
   min-width: 320px;
 }
+
 .top-container {
   background: #E5F3F2;
   height: 240px;
 }
+
 h1 {
   color: #00A79D;
   font: "Roboto Slab";
@@ -17,11 +19,13 @@ h1 {
   padding-top: 30px;
   text-align: center;
 }
+
 .title-box-styling {
   color: #6D6E71;
   font: "Roboto Slab";
   text-align: center;
 }
+
 input {
   display: block;
   height: 28px;
@@ -32,14 +36,17 @@ input {
   padding-left: 8px;
   width: 40%;
 }
+
 input::placeholder {
   color: #A9B2B2;
   filter: blur(.5px);
 }
+
 .input-body {
   margin-bottom: 12px;
   margin-top: 12px;
 }
+
 .save-button {
   background: #00A79D;
   border: none;
@@ -52,17 +59,20 @@ input::placeholder {
   outline: none;
   width: 41.3%;
 }
+
 .save-button:hover {
   background: #045E55;
   color: #FFFFFF;
   cursor: pointer;
 }
+
 .search-engine{
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   width: 40%;
 }
+
  h2 {
    color: #6D6E71;
    display: inline-block;
@@ -73,6 +83,7 @@ input::placeholder {
    margin-top:  20px;
    width: 40%;
 }
+
 .delete {
   background-color: transparent;
   background-image: url(images/delete.svg);
@@ -85,9 +96,11 @@ input::placeholder {
   outline: none;
   width: 30px;
 }
+
 .delete:hover {
   background-image: url(images/delete-hover.svg);
 }
+
 .up-vote {
   background-color: transparent;
   background-image: url(images/upvote.svg);
@@ -100,9 +113,11 @@ input::placeholder {
   outline: none;
   width: 30px;
 }
+
 .up-vote:hover {
   background-image: url(images/upvote-hover.svg);
 }
+
 .output-body {
   color: #6D6E71;
   font-family: "Open Sans";
@@ -111,6 +126,7 @@ input::placeholder {
   margin-top: 10px;
   width: 40%;
 }
+
 .down-vote {
   background-color: transparent;
   background-image: url(images/downvote.svg);
@@ -123,9 +139,11 @@ input::placeholder {
   outline: none;
   width: 30px;
 }
+
 .down-vote:hover{
   background-image: url(images/downvote-hover.svg);
 }
+
 .quality, .level {
   color: #6D6E71;
   display: inline-block;
@@ -137,9 +155,11 @@ input::placeholder {
 .quality {
   margin-left: 12px;
 }
+
 .level {
   margin-left:6px;
 }
+
 hr {
   background: #D1D3D4;
   border: none;
