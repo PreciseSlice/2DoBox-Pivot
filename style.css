@@ -29,6 +29,7 @@ input {
   font-weight: 400;
   margin-left: auto;
   margin-right: auto;
+  outline-color: #00A79D;
   padding-left: 8px;
   width: 40%;
 }
