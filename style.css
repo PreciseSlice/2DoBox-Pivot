@@ -1,0 +1,149 @@
+body {
+  margin: auto;
+  min-width: 320px;
+}
+.top-container {
+  background: #E5F3F2;
+  height: 240px;
+}
+h1 {
+  color: #00A79D;
+  font: "Roboto Slab";
+  font-size: 270%;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  text-align: center;
+}
+.title-box-styling {
+  color: #6D6E71;
+  font: "Roboto Slab";
+  text-align: center;
+}
+input {
+  display: block;
+  height: 28px;
+  font-size: 120%;
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 8px;
+  width: 40%;
+}
+input::placeholder {
+  color: #A9B2B2;
+  filter: blur(.5px);
+}
+.input-body {
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+.save-button {
+  background: #00A79D;
+  border: none;
+  color: #FFFFFF;
+  display: block;
+  font-size: 100%;
+  height: 30.6px;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  width: 41.3%;
+}
+.save-button:hover {
+  background: #045E55;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.search-engine{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 40%;
+}
+ h2 {
+   color: #6D6E71;
+   display: inline-block;
+   font: "Roboto Slab";
+   margin-bottom: 0px;
+   margin-left: 29.5%;
+   margin-right: -4%;
+   margin-top:  20px;
+   width: 40%;
+}
+.delete {
+  background-color: transparent;
+  background-image: url(images/delete.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  height: 30px;
+  margin-left:;
+  outline: none;
+  width: 30px;
+}
+.delete:hover {
+  background-image: url(images/delete-hover.svg);
+}
+.up-vote {
+  background-color: transparent;
+  background-image: url(images/upvote.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  height: 30px;
+  margin-left: 29.5%;
+  outline: none;
+  width: 30px;
+}
+.up-vote:hover {
+  background-image: url(images/upvote-hover.svg);
+}
+.output-body {
+  color: #6D6E71;
+  font-family: "Open Sans";
+  margin-left: 29.5%;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 40%;
+}
+.down-vote {
+  background-color: transparent;
+  background-image: url(images/downvote.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  height: 30px;
+  margin-left: 1%;
+  outline: none;
+  width: 30px;
+}
+.down-vote:hover{
+  background-image: url(images/downvote-hover.svg);
+}
+.quality, .level {
+  color: #6D6E71;
+  display: inline-block;
+  font-family: "Open Sans";
+  font-weight: bold;
+  margin-left: 12px;
+  margin-top: 0;
+}
+.quality {
+  margin-left: 12px;
+}
+.level {
+  margin-left:6px;
+}
+hr {
+  background: #D1D3D4;
+  border: none;
+  height: 1px;
+  margin-top: 5px;
+  width:40%;
+}
