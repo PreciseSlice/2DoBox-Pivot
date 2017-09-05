@@ -74,6 +74,26 @@ input::placeholder {
   width: 40%;
 }
 
+.clear-all-button {
+  background: #6D6E71;
+  border: none;
+  color: #FFFFFF;
+  display: block;
+  font-size: 100%;
+  height: 30.6px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  outline: none;
+  width: 41.3%;
+}
+
+.clear-all-button:hover {
+  background: #EF4136;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
  h2 {
    color: #6D6E71;
    display: inline-block;

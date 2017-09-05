@@ -2,6 +2,8 @@
 
 //Submit Input Button
 var saveButton = $('.save-button');
+//Clear All Button
+var clearAllButton = $('.clear-all-button');
 //Bottom Container
 var bottomContainer = $('.bottom-container');
 //Search Input
@@ -13,9 +15,12 @@ var cardBody = $('.output-body');
 //****Event Listeners****
 
 //Submit Click
-$(document).on('blur', '.output-title', editCardTitle)
+$(document).on('blur', '.output-title', editCardTitle);
 
-$(document).on('blur', '.output-body', editCardBody)
+$(document).on('blur', '.output-body', editCardBody);
+
+//Clear All ideas
+clearAllButton.on('click', clearAllButton);
 
 saveButton.on('click', createIdeaCard);
 
@@ -28,12 +33,19 @@ bottomContainer.on('click', '.up-vote', voteUp);
 bottomContainer.on('click', '.down-vote', voteDown);
 
 
+
 //****Funtions****
 
 
 
-
 var qualityArray = ['swill', 'plausible', 'genius']
+
+//Clear All From Local Storage
+// function clearAllButton(event) {
+//   event.preventDefault();
+//   var allArticles = $('article').remove();
+//   console.log(allArticles);
+// }
 
 function editCardTitle(event){
   event.preventDefault();
@@ -107,7 +119,7 @@ Card.prototype.getQuality = function() {
 
 Card.prototype.incrementQuality = function() {
   if (this.qualityIndex !== qualityArray.length - 1) {
-    this.qualityIndex += 1; 
+    this.qualityIndex += 1;
   }
 };
 
@@ -130,7 +142,7 @@ Card.find = function(id) {
 };
 
 Card.findAll = function() {
-  var values = [], 
+  var values = [],
     keys = Object.keys(window.localStorage);
     for (var i = 0; i < keys.length; i++) {
       values.push(new Card(JSON.parse(window.localStorage.getItem(keys[i]))));
@@ -150,11 +162,15 @@ function createIdeaCard(event) {
   var theIdea = new Card({title, body});
   $('.bottom-container').prepend(ideaCardTemplate(theIdea));
   Card.create(theIdea);
+  $('.input-title').val("");
+  $('.input-body').val("");
+  $('.input-title').focus();
 };
 
 //Prepend Card
 function ideaCardTemplate(idea) {
-  return `
+  $('.bottom-container').prepend(
+      `
         <article id=${idea.id}>
           <h2 contenteditable=true class="output-title">${idea.title}</h2>
           <button class="delete"></button>
@@ -165,13 +181,11 @@ function ideaCardTemplate(idea) {
           <hr>
         </article>
       `
+    )
 };
-//Save To Local
-//Get From Local
-//Make a change
-
+//Search Engine
 function searchIdeas() {
-  var searchEngineValue = searchEngine.val(); 
+  var searchEngineValue = searchEngine.val();
   var results
   if (searchEngineValue !== "") {
     var cards = Card.findAll();
@@ -181,7 +195,7 @@ function searchIdeas() {
     })
   } else {
     results = Card.findAll();
-  } 
+  }
     $('.bottom-container').empty();
     console.log(results)
     renderCards(results);
