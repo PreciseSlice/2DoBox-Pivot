@@ -26,7 +26,7 @@ clearAllButton.on('click', clearAllIdeas);
 
 saveButton.on('click', createIdeaCard);
 
-inputBody.on('keypress', enableSaveButton);
+inputBody.on('keyup', enableSaveButton);
 
 searchEngine.on('keyup', searchIdeas);
 //Delete Button
@@ -46,7 +46,7 @@ var qualityArray = ['swill', 'plausible', 'genius']
 
 //Enable Save Button
 function enableSaveButton() {
-  if(cardTitle.value !== "" || cardBody.value !== "") {
+  if(cardTitle.val() !== "" && cardBody.val() !== "") {
     saveButton.attr("disabled", false);
   }
 }
@@ -175,12 +175,17 @@ function createIdeaCard(event) {
   var title = $('.input-title').val();
   var body = $('.input-body').val();
   var theIdea = new Card({title, body});
+  if (title === "" || body === "") {
+    return 
+  }
+      else {
   $('.bottom-container').prepend(ideaCardTemplate(theIdea));
   Card.create(theIdea);
   $('.input-title').val("");
   $('.input-body').val("");
   $('.input-title').focus();
   saveButton.attr("disabled", true);
+  }
 };
 
 //Prepend Card
