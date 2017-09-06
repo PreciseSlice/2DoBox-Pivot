@@ -12,6 +12,8 @@ var searchEngine = $('.search-engine');
 var cardTitle = $('.output-title');
 
 var cardBody = $('.output-body');
+
+var inputBody = $('.input-body');
 //****Event Listeners****
 
 //Submit Click
@@ -20,9 +22,11 @@ $(document).on('blur', '.output-title', editCardTitle);
 $(document).on('blur', '.output-body', editCardBody);
 
 //Clear All ideas
-clearAllButton.on('click', clearAllButton);
+clearAllButton.on('click', clearAllIdeas);
 
 saveButton.on('click', createIdeaCard);
+
+inputBody.on('keypress', enableSaveButton);
 
 searchEngine.on('keyup', searchIdeas);
 //Delete Button
@@ -40,12 +44,23 @@ bottomContainer.on('click', '.down-vote', voteDown);
 
 var qualityArray = ['swill', 'plausible', 'genius']
 
+//Enable Save Button
+function enableSaveButton() {
+  if(cardTitle.value !== "" || cardBody.value !== "") {
+    saveButton.attr("disabled", false);
+  }
+}
+
 //Clear All From Local Storage
-// function clearAllButton(event) {
-//   event.preventDefault();
-//   var allArticles = $('article').remove();
-//   console.log(allArticles);
-// }
+function clearAllIdeas(event) {
+  event.preventDefault();
+  var allArticles = $('article');
+  if (allArticles.length !== 0){
+    allArticles.remove();
+    localStorage.clear();
+    $('.input-title').focus();
+  }
+}
 
 function editCardTitle(event){
   event.preventDefault();
@@ -165,6 +180,7 @@ function createIdeaCard(event) {
   $('.input-title').val("");
   $('.input-body').val("");
   $('.input-title').focus();
+  saveButton.attr("disabled", true);
 };
 
 //Prepend Card
