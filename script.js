@@ -13,7 +13,10 @@ var cardTitle = $('.output-title');
 
 var cardBody = $('.output-body');
 
+var inputTitle = $('.input-title');
+
 var inputBody = $('.input-body');
+
 //****Event Listeners****
 
 //Submit Click
@@ -26,7 +29,7 @@ clearAllButton.on('click', clearAllIdeas);
 
 saveButton.on('click', createIdeaCard);
 
-inputBody.on('keyup', enableSaveButton);
+(inputTitle, inputBody).on('keyup', enableSaveButton);
 
 searchEngine.on('keyup', searchIdeas);
 //Delete Button
@@ -46,8 +49,10 @@ var qualityArray = ['swill', 'plausible', 'genius']
 
 //Enable Save Button
 function enableSaveButton() {
-  if(cardTitle.val() !== "" && cardBody.val() !== "") {
-    saveButton.attr("disabled", false);
+  if(inputTitle.val() !== "" && inputBody.val() !== "") {
+    saveButton.removeAttr('disabled');
+  } else {
+    saveButton.attr('disabled', true)
   }
 }
 
@@ -158,11 +163,12 @@ Card.find = function(id) {
 
 Card.findAll = function() {
   var values = [],
-    keys = Object.keys(window.localStorage);
+  keys = Object.keys(window.localStorage);
     for (var i = 0; i < keys.length; i++) {
       values.push(new Card(JSON.parse(window.localStorage.getItem(keys[i]))));
     }
     return values;
+    console.log(values)
 };
 
 Card.delete = function(id) {
@@ -175,17 +181,12 @@ function createIdeaCard(event) {
   var title = $('.input-title').val();
   var body = $('.input-body').val();
   var theIdea = new Card({title, body});
-  if (title === "" || body === "") {
-    return 
-  }
-      else {
   $('.bottom-container').prepend(ideaCardTemplate(theIdea));
   Card.create(theIdea);
   $('.input-title').val("");
   $('.input-body').val("");
   $('.input-title').focus();
   saveButton.attr("disabled", true);
-  }
 };
 
 //Prepend Card
