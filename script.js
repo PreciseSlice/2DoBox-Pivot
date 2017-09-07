@@ -78,7 +78,6 @@ function renderCards(cards = []) {
   }
 };
 
-//Clears All Ideas From Local Storage
 function clearAllIdeas(event) {
   event.preventDefault();
   var allArticles = $('article');
@@ -107,7 +106,6 @@ function editCardBody(event){
   card.save();
 };
 
-//Vote Up
 function voteUp(event) {
   event.preventDefault();
   var articleElement = $(event.target).closest('article')
@@ -118,7 +116,6 @@ function voteUp(event) {
   articleElement.find('.level').text(card.getQuality());
 };
 
-//Vote Down
 function voteDown(event) {
   event.preventDefault();
   var articleElement = $(event.target).closest('article');
@@ -171,7 +168,6 @@ Card.findAll = function() {
       values.push(new Card(JSON.parse(localStorage.getItem(keys[i]))));
     }
     return values;
-    console.log(values)
 };
 
 function searchIdeas() {
