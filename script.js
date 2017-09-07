@@ -175,14 +175,17 @@ function searchIdeas() {
   var results
   if (searchEngineValue !== "") {
     var cards = Card.findAll();
+    console.log(Card.findAll())
     var searchRegex = new RegExp(searchEngineValue);
     results = cards.filter(function(card) {
+      console.log()
       return searchRegex.test(card.title) || searchRegex.test(card.body)
     })
   } else {
     results = Card.findAll();
   }
     $('.bottom-container').empty();
+    renderCards(results)
 };
 
 renderCards(Card.findAll())
