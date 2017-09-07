@@ -194,7 +194,6 @@ function ideaCardTemplate(idea) {
           <button class="up-vote"></button>
           <button class="down-vote"></button>
           <p class="quality">quality: </p><p class="level">${idea.getQuality()}</p>
-          <hr>
         </article>
       `
     )
