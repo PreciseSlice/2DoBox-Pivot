@@ -26,30 +26,30 @@ h1 {
   text-align: center;
 }
 input {
+  border: thin solid lightgrey;
   display: block;
-  height: 28px;
   font-size: 120%;
   font-weight: 400;
+  height: 28px;
   margin: auto;
   padding-left: 8px;
-  width: 500px;
-  border: thin solid lightgrey;
   resize: none;
+  width: 500px;
 }
 input::placeholder {
   color: #A9B2B2;
   filter: blur(.5px);
 }
 .input-body {
+  border: thin solid lightgrey;
   display: block;
-  height: 100px;
   font-size: 120%;
   font-weight: 400;
+  height: 100px;
   margin: auto;
-  padding-left: 8px;
   margin-bottom: 12px;
   margin-top: 12px;
-  border: thin solid lightgrey;
+  padding-left: 8px;
   resize: none;
   width: 500px;
 }
@@ -99,22 +99,22 @@ input::placeholder {
   cursor: pointer;
 }
  h2 {
-   color: #6D6E71;
-   display: inline-block;
-   font-family: "Roboto Slab";
-   margin-bottom: 0px;
-   margin: auto;
-   margin-top:  20px;
-   width: 470px;
+  color: #6D6E71;
+  display: inline-block;
+  font-family: "Roboto Slab";
+  margin-bottom: 0px;
+  margin: auto;
+  margin-top:  20px;
+  width: 470px;
 }
 .delete {
   background-color: transparent;
   background-image: url(images/delete.svg);
   border: none;
   height: 30px;
-  width: 30px;
   margin-top: 4px;
   margin-left: 4px;
+  width: 30px;
 }
 .delete:hover {
   background-image: url(images/delete-hover.svg);
@@ -154,17 +154,17 @@ input::placeholder {
   margin-top: 0;
 }
 .quality {
-  margin-left: 12px;
   font-weight: bold;
+  margin-left: 12px;
 }
 .level {
   font-weight: normal;
   margin-left: 6px;
 }
 article {
+  border-bottom: thin solid lightgrey;
   margin: auto;
   width: 512px;
-  border-bottom: thin solid lightgrey
 }
 @media (max-width:600px) {
 html {
@@ -195,38 +195,38 @@ h2 {
   width: 225px;
 }
 .clear-all-button {
- display: block;
- font-size: 100%;
- height: 30.6px;
- margin-top: 20px;
- width: 276px;
+  display: block;
+  font-size: 100%;
+  height: 30.6px;
+  margin-top: 20px;
+  width: 276px;
 }
 .search-engine{
- margin-top: 20px;
- width: 265px;
+  margin-top: 20px;
+  width: 265px;
 }
 .save-button {
- display: block;
- font-size: 20px;
- height: 40px;
- width: 276px;
+  display: block;
+  font-size: 20px;
+  height: 40px;
+  width: 276px;
 }
 .input-body {
- display: block;
- height: 90px;
- font-size: 120%;
- font-weight: 400;
- padding-left: 8px;
- margin-bottom: 12px;
- margin-top: 12px;
- width: 265px;
+  display: block;
+  height: 90px;
+  font-size: 120%;
+  font-weight: 400;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  padding-left: 8px;
+  width: 265px;
 }
 input {
- display: block;
- height: 30px;
- font-size: 120%;
- font-weight: 400;
- padding-left: 8px;
- width: 265px;
+  display: block;
+  font-size: 120%;
+  font-weight: 400;
+  height: 30px;
+  padding-left: 8px;
+  width: 265px;
 }
 }
