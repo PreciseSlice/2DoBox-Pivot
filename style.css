@@ -114,6 +114,7 @@ input::placeholder {
   height: 30px;
   margin-top: 4px;
   margin-left: 4px;
+  outline: none;
   width: 30px;
 }
 .delete:hover {
@@ -124,6 +125,7 @@ input::placeholder {
   background-image: url(images/upvote.svg);
   border: none;
   height: 30px;
+  outline: none;
   width: 30px;
 }
 .up-vote:hover {
@@ -141,6 +143,7 @@ input::placeholder {
   background-image: url(images/downvote.svg);
   border: none;
   height: 30px;
+  outline: none;
   margin-left: 1%;
   width: 30px;
 }
