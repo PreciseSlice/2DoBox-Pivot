@@ -190,6 +190,10 @@ input::placeholder {
   margin-left: 6px;
 }
 
+.toggle-completed {
+  background-color: grey;
+}
+
 article {
   border-bottom: thin solid lightgrey;
   margin: auto;
