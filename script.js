@@ -35,6 +35,10 @@ function createIdeaCard(event) {
   var theIdea = new Card({title, body});
   $('.bottom-container').prepend(ideaCardTemplate(theIdea));
   Card.create(theIdea);
+  resetInputs();
+}
+
+function resetInputs () {
   $('.input-title').val("");
   $('.input-body').val("");
   $('.input-title').focus();
@@ -47,16 +51,14 @@ Card.create = function(card) {
 
 function ideaCardTemplate(idea) {
   $('.bottom-container').prepend(
-      `
-        <article id=${idea.id}>
+      `<article id=${idea.id}>
           <h2 contenteditable=true class="output-title">${idea.title}</h2>
           <button class="delete"></button>
           <p contenteditable=true class="output-body">${idea.body}</p>
           <button class="up-vote"></button>
           <button class="down-vote"></button>
           <p class="quality">quality: </p><p class="level">${idea.getQuality()}</p>
-        </article>
-      `
+        </article>`
     );
 }
 
@@ -162,11 +164,10 @@ Card.findAll = function() {
 
 function searchIdeas() {
   var searchEngineValue = $('.search-engine').val();
-  var results;
   if (searchEngineValue !== "") {
     var cards = Card.findAll();
     var searchRegex = new RegExp(searchEngineValue);
-    results = cards.filter(function(card) {
+    var results = cards.filter(function(card) {
       return searchRegex.test(card.title) || searchRegex.test(card.body);
     });
   } else {
