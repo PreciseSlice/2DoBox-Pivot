@@ -52,9 +52,9 @@ Card.create = function(card) {
 function ideaCardTemplate(idea) {
   $('.bottom-container').prepend(
       `<article id=${idea.id}>
-          <h2 contenteditable=true class="output-title">${idea.title}</h2>
+          <h2 contenteditable=true class="output-title" aria-role="title of idea">${idea.title}</h2>
           <button class="delete"></button>
-          <p contenteditable=true class="output-body">${idea.body}</p>
+          <p contenteditable=true class="output-body" aria-role="body of idea">${idea.body}</p>
           <button class="up-vote"></button>
           <button class="down-vote"></button>
           <p class="quality">quality: </p><p class="level">${idea.getQuality()}</p>

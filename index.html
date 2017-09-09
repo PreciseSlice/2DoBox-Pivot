@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
+ 
   <head>
     <title>Idea Box</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
   </head>
+  
   <body>
-    <section class="top-container">
+    
+    <section class="top-container" role="container">
        <h1 class="title">idea<span class="title-box-styling">box</span></h1>
         <form>
-          <input type="text" class="input-title" placeholder="Title">
-          <textarea type="text" class="input-body" placeholder="Body"></textarea>
-          <button class="save-button" disabled />save</button>
+          <input type="text" class="input-title" placeholder="Title" aria-label="title input field">
+          <textarea type="text" class="input-body" placeholder="Body" aria-label="body input field"></textarea>
+          <button class="save-button" disabled aria-label="save button">save</button>
         </form>
     </section>
-  <input class="search-engine" placeholder="Search">
-  <button class="clear-all-button">clear all ideas</button>
+  
+    <input class="search-engine" placeholder="Search">
+    <button class="clear-all-button">clear all ideas</button>
+    
     <section class="bottom-container">
     </section>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="script.js"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  
   </body>
 </html>
