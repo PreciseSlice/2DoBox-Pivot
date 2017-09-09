@@ -47,7 +47,7 @@ input::placeholder {
   filter: blur(.5px);
 }
 
-.input-body {
+.input-task {
   border: thin solid lightgrey;
   display: block;
   font-size: 120%;
@@ -61,7 +61,7 @@ input::placeholder {
   width: 500px;
 }
 
-.input-body::placeholder {
+.input-task::placeholder {
   color: #A9B2B2;
   filter: blur(.5px);
 }
@@ -151,7 +151,7 @@ input::placeholder {
   background-image: url(images/upvote-hover.svg);
 }
 
-.output-body {
+.output-task{
   color: #6D6E71;
   font-family: "Open Sans";
   font-size: 18px;
@@ -217,7 +217,7 @@ article {
     padding-top: 30px;
   }
 
-  .output-body {
+  .output-task {
     font-size: 21px;
     margin-top: 10px;
     width: 265px;
@@ -250,7 +250,7 @@ article {
     width: 276px;
   }
 
-  .input-body {
+  .input-task{
     display: block;
     font-size: 120%;
     font-weight: 400;
