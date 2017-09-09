@@ -16,7 +16,14 @@ $('.bottom-container').on('click', '.delete', deleteToDoCard);
 $('.bottom-container').on('click', '.up-vote', voteUp);
 $('.bottom-container').on('click', '.down-vote', voteDown);
 
+$('.bottom-container').on('click', '.completed-btn', toggleCompleted);
+
 //****Functions****
+
+function toggleCompleted () {
+  var completedArticle = $(this).closest('article');
+  completedArticle.toggleClass('toggle-completed');
+}
 
 function enterKeySubmit(event) {
   if (event.keyCode === 13) {
@@ -65,12 +72,13 @@ Card.create = function(card) {
 function toDoCardTemplate(toDo) {
   $('.bottom-container').prepend(
       `<article id=${toDo.id}>
-          <h2 contenteditable=true class="output-title" aria-role="title of toDo">${toDo.title}</h2>
+          <h2 contenteditable=true class="output-title" aria-label="title of toDo">${toDo.title}</h2>
           <button class="delete"></button>
-          <p contenteditable=true class="output-task" aria-role="task of toDo">${toDo.task}</p>
+          <p contenteditable=true class="output-task" aria-label="task of toDo">${toDo.task}</p>
           <button class="up-vote"></button>
           <button class="down-vote"></button>
           <p class="quality">quality: </p><p class="level">${toDo.getQuality()}</p>
+          <button class="completed-btn" aria-label="mark as completed">Completed Task</button>
         </article>`
     );
 }
