@@ -1,20 +1,33 @@
 //****Event Listeners****
 
 $(document).on('blur', '.output-title', editCardTitle);
-$(document).on('blur', '.output-body', editCardBody);
-$('.clear-all-button').on('click', clearAllIdeas);
-$('.save-button').on('click', createIdeaCard);
-$('.input-title, .input-body').on('keyup', enableSaveButton);
-$('.search-engine').on('keyup', searchIdeas);
-$('.bottom-container').on('click', '.delete', deleteIdeaCard);
+$(document).on('blur', '.output-task', editCardTask);
+
+$(document).on('keydown', '.output-title', enterKeySubmit);
+$(document).on('keydown', '.output-task', enterKeySubmit);
+
+$('.clear-all-button').on('click', clearAllToDos);
+$('.save-button').on('click', createToDoCard);
+
+$('.input-title, .input-task').on('keyup', enableSaveButton);
+$('.search-engine').on('keyup', searchToDos);
+
+$('.bottom-container').on('click', '.delete', deleteToDoCard);
 $('.bottom-container').on('click', '.up-vote', voteUp);
 $('.bottom-container').on('click', '.down-vote', voteDown);
 
 //****Functions****
 
+function enterKeySubmit(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    $(this).blur();
+  }
+}
+
 function enableSaveButton() {
   var saveButton = $('.save-button');
-  if ($('.input-title').val() !== "" && $('.input-body').val() !== "") {
+  if ($('.input-title').val() !== "" && $('.input-task').val() !== "") {
     saveButton.removeAttr('disabled');
   } else {
     saveButton.attr('disabled', true);
@@ -23,24 +36,24 @@ function enableSaveButton() {
 
 function Card(params) {
   this.title = params.title;
-  this.body = params.body;
+  this.task = params.task;
   this.id = params.id || Date.now();
   this.qualityIndex = params.qualityIndex || 0 ;
 }
 
-function createIdeaCard(event) {
+function createToDoCard(event) {
   event.preventDefault();
   var title = $('.input-title').val();
-  var body = $('.input-body').val();
-  var theIdea = new Card({title, body});
-  $('.bottom-container').prepend(ideaCardTemplate(theIdea));
-  Card.create(theIdea);
+  var task = $('.input-task').val();
+  var theToDo = new Card({title, task});
+  $('.bottom-container').prepend(toDoCardTemplate(theToDo));
+  Card.create(theToDo);
   resetInputs();
 }
 
 function resetInputs () {
   $('.input-title').val("");
-  $('.input-body').val("");
+  $('.input-task').val("");
   $('.input-title').focus();
   $('.save-button').attr("disabled", true);
 }
@@ -49,15 +62,15 @@ Card.create = function(card) {
   localStorage.setItem(card.id, JSON.stringify(card));
 };
 
-function ideaCardTemplate(idea) {
+function toDoCardTemplate(toDo) {
   $('.bottom-container').prepend(
-      `<article id=${idea.id}>
-          <h2 contenteditable=true class="output-title" aria-role="title of idea">${idea.title}</h2>
+      `<article id=${toDo.id}>
+          <h2 contenteditable=true class="output-title" aria-role="title of toDo">${toDo.title}</h2>
           <button class="delete"></button>
-          <p contenteditable=true class="output-body" aria-role="body of idea">${idea.body}</p>
+          <p contenteditable=true class="output-task" aria-role="task of toDo">${toDo.task}</p>
           <button class="up-vote"></button>
           <button class="down-vote"></button>
-          <p class="quality">quality: </p><p class="level">${idea.getQuality()}</p>
+          <p class="quality">quality: </p><p class="level">${toDo.getQuality()}</p>
         </article>`
     );
 }
@@ -65,11 +78,11 @@ function ideaCardTemplate(idea) {
 function renderCards(cards = []) {
   for ( var i = 0; i < cards.length; i++) {
     var card = cards[i];
-    $('.bottom-container').append(ideaCardTemplate(card));
+    $('.bottom-container').append(toDoCardTemplate(card));
   }
 }
 
-function clearAllIdeas(event) {
+function clearAllToDos(event) {
   event.preventDefault();
   var allArticles = $('article');
   if (allArticles.length !== 0){
@@ -88,12 +101,12 @@ function editCardTitle(event){
   card.save();
 }
 
-function editCardBody(event){
+function editCardTask(event){
   event.preventDefault();
   var articleElement = $(event.target).closest('article');
   var id = articleElement.prop('id');
   var card = Card.find(id);
-  card.body = $(event.target).text();
+  card.task = $(event.target).text();
   card.save();
 }
 
@@ -134,7 +147,7 @@ Card.prototype.decrementQuality = function() {
   }
 };
 
-function deleteIdeaCard(event) {
+function deleteToDoCard(event) {
   var articleElement = $(event.target).closest('article');
   var id = articleElement.prop('id');
   articleElement.remove();
@@ -162,13 +175,13 @@ Card.findAll = function() {
     return values;
 };
 
-function searchIdeas() {
+function searchToDos() {
   var searchEngineValue = $('.search-engine').val();
   if (searchEngineValue !== "") {
     var cards = Card.findAll();
     var searchRegex = new RegExp(searchEngineValue);
     var results = cards.filter(function(card) {
-      return searchRegex.test(card.title) || searchRegex.test(card.body);
+      return searchRegex.test(card.title) || searchRegex.test(card.task);
     });
   } else {
     results = Card.findAll();
