@@ -16,14 +16,37 @@ $('.bottom-container').on('click', '.delete', deleteToDoCard);
 $('.bottom-container').on('click', '.up-vote', voteUp);
 $('.bottom-container').on('click', '.down-vote', voteDown);
 
-$('.bottom-container').on('click', '.completed-btn', toggleCompleted);
+$('.bottom-container').on('click', '.completed-btn', saveCompleted);
 
 //****Functions****
 
-function toggleCompleted () {
-  var completedArticle = $(this).closest('article');
-  completedArticle.toggleClass('toggle-completed');
+Card.prototype.toggleCompleted = function() {
+  if (this.completed === false) {
+    this.completed = true;
+  } else {
+    this.completed = false;
+  }
+  return this.completed;
 }
+
+function saveCompleted() {
+  var articleElement = $(this).closest('article');
+  var id = articleElement.prop('id');
+  var card = Card.find(id);
+
+  card.toggleCompleted();
+
+  // $(this).data(card.completed)
+  // var completedArticle = $(this).closest('article');
+
+  // completedArticle.toggleClass('toggle-completed');
+
+  console.log(card);
+  card.save();
+
+
+}
+
 
 function enterKeySubmit(event) {
   if (event.keyCode === 13) {
@@ -45,7 +68,8 @@ function Card(params) {
   this.title = params.title;
   this.task = params.task;
   this.id = params.id || Date.now();
-  this.qualityIndex = params.qualityIndex || 0 ;
+  this.qualityIndex = params.qualityIndex || 0;
+  this.completed = params.completed || false;
 }
 
 function createToDoCard(event) {
@@ -77,8 +101,8 @@ function toDoCardTemplate(toDo) {
           <p contenteditable=true class="output-task" aria-label="task of toDo">${toDo.task}</p>
           <button class="up-vote"></button>
           <button class="down-vote"></button>
-          <p class="quality">quality: </p><p class="level">${toDo.getQuality()}</p>
-          <button class="completed-btn" aria-label="mark as completed">Completed Task</button>
+          <p class="quality">importance: </p><p class="level">${toDo.getQuality()}</p>
+          <button class="completed-btn" data-completed="${toDo.completed}" aria-label="mark as completed">Completed Task</button>
         </article>`
     );
 }
@@ -139,17 +163,20 @@ function voteDown(event) {
 }
 
 Card.prototype.getQuality = function() {
-  var qualityArray = ['swill', 'plausible', 'genius'];
+  console.log('getQuality')
+  var qualityArray = ['None', 'Low', 'Normal', 'high', 'critical'];
   return qualityArray[this.qualityIndex];
 };
 
 Card.prototype.incrementQuality = function() {
-  if (this.qualityIndex < 3) {
+  console.log('upvote');
+  if (this.qualityIndex < 4) {
     this.qualityIndex += 1;
   }
 };
 
 Card.prototype.decrementQuality = function() {
+  console.log('dwnvote');
   if (this.qualityIndex > 0) {
     this.qualityIndex -= 1;
   }
@@ -169,6 +196,8 @@ Card.delete = function(id) {
 Card.prototype.save = function() {
   Card.create(this);
 };
+
+//something weird going on here
 
 Card.find = function(id) {
   return new Card(JSON.parse(localStorage.getItem(id)));
