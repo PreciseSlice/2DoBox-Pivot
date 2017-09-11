@@ -18,9 +18,37 @@ $('.bottom-container').on('click', '.down-vote', voteDown);
 
 $('.bottom-container').on('click', '.completed-btn', saveCompleted);
 
+$('.show-completed').on('click', showCompletedTODO);
+
 //****Functions****
 
-$(document).ready(searchToDos);
+$(document).ready(onLoad);
+
+function onLoad (toDo) {
+  console.log(toDo);
+  searchToDos ();
+  if (toDo.completed) {
+    $(`#${toDo.id}`).addClass('toggle-display');
+
+  }
+}
+
+// run search, this displays all 
+// filter from search 
+// on load toggle class 
+// simliar to todoCardTemplate without adding class at the end 
+// 
+
+function showCompletedTODO () {
+  searchToDos ();
+}
+
+// function showCompletedTODO () { 
+//   $('article').each( function (index, completedElement) {
+//     $('article').removeClass ('toggle-display');
+//     console.log("I am this",this);
+//   });
+// }
 
 Card.prototype.toggleCompleted = function() {
   this.completed = !this.completed;
@@ -216,6 +244,3 @@ function searchToDos() {
     $('.bottom-container').empty();
     renderCards(results);
 };
-
-// renderCards(Card.findAll());
-
