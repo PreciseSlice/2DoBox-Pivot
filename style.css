@@ -194,6 +194,15 @@ input::placeholder {
   background-color: grey;
 }
 
+.toggle-display {
+  display: none;
+}
+
+.show-completed {
+  display: block;
+  margin: auto; 
+}
+
 article {
   border-bottom: thin solid lightgrey;
   margin: auto;
