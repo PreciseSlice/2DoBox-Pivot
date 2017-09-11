@@ -20,40 +20,28 @@ $('.bottom-container').on('click', '.completed-btn', saveCompleted);
 
 //****Functions****
 
+$(document).ready(searchToDos);
+
 Card.prototype.toggleCompleted = function() {
-  if (this.completed === false) {
-    this.completed = true;
-  } else {
-    this.completed = false;
-  }
+  this.completed = !this.completed;
   return this.completed;
-}
+};
 
 function saveCompleted() {
   var articleElement = $(this).closest('article');
   var id = articleElement.prop('id');
   var card = Card.find(id);
-
   card.toggleCompleted();
-
-  // $(this).data(card.completed)
-  // var completedArticle = $(this).closest('article');
-
-  // completedArticle.toggleClass('toggle-completed');
-
-  console.log(card);
+  articleElement.toggleClass('toggle-completed');
   card.save();
-
-
-}
-
+};
 
 function enterKeySubmit(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     $(this).blur();
-  }
-}
+  };
+};
 
 function enableSaveButton() {
   var saveButton = $('.save-button');
@@ -61,16 +49,20 @@ function enableSaveButton() {
     saveButton.removeAttr('disabled');
   } else {
     saveButton.attr('disabled', true);
-  }
-}
+  };
+};
 
 function Card(params) {
   this.title = params.title;
   this.task = params.task;
   this.id = params.id || Date.now();
-  this.qualityIndex = params.qualityIndex || 0;
+  if (params.qualityIndex == undefined) {
+    this.qualityIndex = 2;
+  } else {
+    this.qualityIndex = params.qualityIndex;
+  };
   this.completed = params.completed || false;
-}
+};
 
 function createToDoCard(event) {
   event.preventDefault();
@@ -80,14 +72,14 @@ function createToDoCard(event) {
   $('.bottom-container').prepend(toDoCardTemplate(theToDo));
   Card.create(theToDo);
   resetInputs();
-}
+};
 
-function resetInputs () {
+function resetInputs() {
   $('.input-title').val("");
   $('.input-task').val("");
   $('.input-title').focus();
   $('.save-button').attr("disabled", true);
-}
+};
 
 Card.create = function(card) {
   localStorage.setItem(card.id, JSON.stringify(card));
@@ -102,17 +94,20 @@ function toDoCardTemplate(toDo) {
           <button class="up-vote"></button>
           <button class="down-vote"></button>
           <p class="quality">importance: </p><p class="level">${toDo.getQuality()}</p>
-          <button class="completed-btn" data-completed="${toDo.completed}" aria-label="mark as completed">Completed Task</button>
+          <button class="completed-btn" aria-label="mark as completed">Completed Task</button>
         </article>`
     );
-}
+  if (toDo.completed) {
+    $(`#${toDo.id}`).addClass('toggle-completed');
+  };
+};
 
 function renderCards(cards = []) {
   for ( var i = 0; i < cards.length; i++) {
     var card = cards[i];
     $('.bottom-container').append(toDoCardTemplate(card));
-  }
-}
+  };
+};
 
 function clearAllToDos(event) {
   event.preventDefault();
@@ -121,8 +116,8 @@ function clearAllToDos(event) {
     allArticles.remove();
     localStorage.clear();
     $('.input-title').focus();
-  }
-}
+  };
+};
 
 function editCardTitle(event){
   event.preventDefault();
@@ -131,7 +126,7 @@ function editCardTitle(event){
   var card = Card.find(id);
   card.title = $(event.target).text();
   card.save();
-}
+};
 
 function editCardTask(event){
   event.preventDefault();
@@ -140,7 +135,7 @@ function editCardTask(event){
   var card = Card.find(id);
   card.task = $(event.target).text();
   card.save();
-}
+};
 
 function voteUp(event) {
   event.preventDefault();
@@ -150,7 +145,7 @@ function voteUp(event) {
   card.incrementQuality();
   card.save();
   articleElement.find('.level').text(card.getQuality());
-}
+};
 
 function voteDown(event) {
   event.preventDefault();
@@ -160,23 +155,20 @@ function voteDown(event) {
   card.decrementQuality();
   card.save();
   articleElement.find('.level').text(card.getQuality());
-}
+};
 
 Card.prototype.getQuality = function() {
-  console.log('getQuality')
   var qualityArray = ['None', 'Low', 'Normal', 'high', 'critical'];
   return qualityArray[this.qualityIndex];
 };
 
 Card.prototype.incrementQuality = function() {
-  console.log('upvote');
   if (this.qualityIndex < 4) {
     this.qualityIndex += 1;
-  }
+  };
 };
 
 Card.prototype.decrementQuality = function() {
-  console.log('dwnvote');
   if (this.qualityIndex > 0) {
     this.qualityIndex -= 1;
   }
@@ -187,7 +179,7 @@ function deleteToDoCard(event) {
   var id = articleElement.prop('id');
   articleElement.remove();
   Card.delete(id);
-}
+};
 
 Card.delete = function(id) {
   localStorage.removeItem(id);
@@ -196,8 +188,6 @@ Card.delete = function(id) {
 Card.prototype.save = function() {
   Card.create(this);
 };
-
-//something weird going on here
 
 Card.find = function(id) {
   return new Card(JSON.parse(localStorage.getItem(id)));
@@ -208,7 +198,7 @@ Card.findAll = function() {
   keys = Object.keys(localStorage);
     for (var i = 0; i < keys.length; i++) {
       values.push(new Card(JSON.parse(localStorage.getItem(keys[i]))));
-    }
+    };
     return values;
 };
 
@@ -221,10 +211,11 @@ function searchToDos() {
       return searchRegex.test(card.title) || searchRegex.test(card.task);
     });
   } else {
-    results = Card.findAll();
-  }
+    var results = Card.findAll();
+  };
     $('.bottom-container').empty();
     renderCards(results);
-}
+};
 
-renderCards(Card.findAll());
+// renderCards(Card.findAll());
+
