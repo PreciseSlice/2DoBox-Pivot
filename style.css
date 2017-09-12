@@ -211,6 +211,29 @@ article {
   width: 512px;
 }
 
+h3 {
+  text-align: center;
+  position: relative;
+  bottom: 7px;
+  color: #ccc;
+}
+
+.arrow-container {
+  width: 444px;
+  display: flex;
+  margin: -13px auto;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.arrows {
+  width: 74px;
+}
+
+.small-arrows {
+  display: none;
+}
+
 .filter-container {
   width: 512px;
   margin: auto;
@@ -219,8 +242,39 @@ article {
 }
 
 .filter-container button {
-  width: 100px;
+  width: 84px;
+  color: #fff;
+  margin: 0 8px 8px 8px;
   border: none;
+  height: 30.6px;
+  font-size: 100%;
+  opacity: .7;
+  transition: opacity .3s ease-in-out;
+}
+
+.filter-container button:hover {
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.filter-none {
+  background-color: #939598;
+}
+
+.filter-low {
+  background-color: #6dd47e;
+}
+
+.filter-normal {
+  background-color: #e0c46a;
+}
+
+.filter-high {
+  background-color: #f5844e;
+}
+
+.filter-critical {
+  background-color: #cb4b57;
 }
 
 
@@ -304,4 +358,44 @@ article {
     padding-left: 8px;
     width: 265px;
   }
+
+  .filter-container {
+    width: 265px;
+  }
+
+  .filter-left, .filter-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-container button {
+    width: 72px;
+  }
+
+  button.filter-normal {
+    height: 62px;
+    position: relative;
+    top: 4px;
+  }
+
+  h3 {
+    bottom: 0;
+  }
+
+  .arrow-container {
+    width: 289px;
+  }
+
+  .arrows {
+    display: none;
+  }
+
+  .small-arrows {
+    display: block;
+    width: 17px;
+    position: relative;
+    top: 7px;
+  }
+
+
 }
