@@ -20,12 +20,31 @@ $('.bottom-container').on('click', '.completed-btn', saveCompleted);
 
 $('.show-completed').on('click', showCompletedToDos);
 
+$('.filter-none').on('click', function() {
+  displayCardsByQuality(0);
+})
+
+$('.filter-low').on('click', function() {
+  displayCardsByQuality(1);
+})
+
+$('.filter-normal').on('click', function() {
+  displayCardsByQuality(2);
+})
+
+$('.filter-high').on('click', function() {
+  displayCardsByQuality(3);
+})
+
+$('.filter-critical').on('click', function() {
+  displayCardsByQuality(4);
+})
+
 //****Functions****
 
 $(document).ready(function (){
   displayCards(false, 10);
 });
-
 
 function showCompletedToDos() {
   displayCards(true);
@@ -103,7 +122,7 @@ function toDoCardTemplate(toDo) {
           <button class="up-vote"></button>
           <button class="down-vote"></button>
           <p class="quality">importance: </p><p class="level">${toDo.getQuality()}</p>
-          <button class="completed-btn" aria-label="mark as completed">Completed Task</button>
+          <button class="completed-btn" aria-label="mark as completed">Toggle Completed</button>
         </article>`
     );
   if (toDo.completed) {
@@ -246,51 +265,3 @@ function displayCardsByQuality(qualityIndex) {
   $('.bottom-container').empty();
   renderCards(results);
 }
-
-$('.filter-none').on('click', function() {
-  displayCardsByQuality(0);
-})
-
-$('.filter-low').on('click', function() {
-  displayCardsByQuality(1);
-})
-
-$('.filter-normal').on('click', function() {
-  displayCardsByQuality(2);
-})
-
-$('.filter-high').on('click', function() {
-  displayCardsByQuality(3);
-})
-
-$('.filter-critical').on('click', function() {
-  displayCardsByQuality(4);
-})
-
-// function displayFirstTen() {
-//   var cards = Card.findAll();
-//   var results = cards.filter(function(card) {
-//       return card.completed === false;
-//     });
-//   var lastTen = results.splice(-10);
-//       $('.bottom-container').empty();
-//   renderCards(lastTen);
-// }
-
-// function displayAllCompleted() {
-//   var cards = Card.findAll();
-//   var results = cards.filter(function(card) {
-//       return card.completed === true;
-//     });
-//       $('.bottom-container').empty();
-//   renderCards(lastTen);
-// }
-
-// function displayAllNotCompleted() {
-//   var cards = Card.findAll();
-//   var results = cards.filter(function(card) {
-//       return card.completed === false;
-//     });
-//       $('.bottom-container').empty();
-//   renderCards(lastTen);
-// }

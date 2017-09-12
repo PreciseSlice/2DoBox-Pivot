@@ -1,6 +1,11 @@
 * {
   outline-color: #00A79D;
+  transition: opacity .3s ease-in-out;
+  transition: background-color .3s ease-in-out;
+
 }
+
+
 
 body {
   margin: auto;
@@ -8,12 +13,13 @@ body {
 }
 
 .top-container {
-  background: #E5F3F2;
+  background: #839cc1;
   height: 316px;
 }
 
 h1 {
-  color: #00A79D;
+  color: #fff;
+  opacity: .9;
   font-family: "Roboto Slab", serif;
   font-size: 45px;
   font-weight: bold;
@@ -25,7 +31,8 @@ h1 {
 }
 
 .title-box-styling {
-  color: #6D6E71;
+  color: #182d4c;
+  opacity: .8;
   font-family: "Roboto Slab", serif;
   text-align: center;
 }
@@ -139,6 +146,7 @@ input::placeholder {
   margin-left: 4px;
   outline: none;
   width: 30px;
+  cursor: pointer;
 }
 
 .delete:hover {
@@ -152,6 +160,7 @@ input::placeholder {
   height: 30px;
   outline: none;
   width: 30px;
+  cursor: pointer;
 }
 
 .up-vote:hover {
@@ -174,6 +183,7 @@ input::placeholder {
   margin-left: 1%;
   outline: none;
   width: 30px;
+  cursor: pointer;
 }
 
 .down-vote:hover{
@@ -185,6 +195,8 @@ input::placeholder {
   display: inline-block;
   font-family: "Open Sans", sans-serif;
   margin-top: 0;
+  position: relative;
+  bottom: 5px;
 }
 
 .quality {
@@ -198,7 +210,10 @@ input::placeholder {
 }
 
 .toggle-completed {
-  background-color: grey;
+  background-color: #ddd;
+  opacity: .6;
+  padding: 0 10px;
+
 }
 
 .toggle-display {
@@ -217,6 +232,8 @@ h3 {
   bottom: 7px;
   color: #ccc;
 }
+
+
 
 .arrow-container {
   width: 444px;
@@ -242,6 +259,7 @@ h3 {
 }
 
 .filter-container button {
+  cursor: pointer;
   width: 84px;
   color: #fff;
   margin: 0 8px 8px 8px;
@@ -276,6 +294,27 @@ h3 {
 .filter-critical {
   background-color: #cb4b57;
 }
+
+.completed-btn {
+  float: right;
+  font-size: 100%;
+  height: 30.6px;
+  border: none;
+  background: none;
+  color: #cb4b57;
+  opacity: .5;
+}
+
+.completed-btn:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.completed-btn:focus, .completed:active, .completed:visited {
+  outline-color: #fff;
+}
+
+
 
 
 
@@ -395,6 +434,14 @@ h3 {
     width: 17px;
     position: relative;
     top: 7px;
+  }
+
+  .completed-btn {
+    display: block;
+    float: none;
+    text-align: right;
+    margin: -15px auto 12px;
+
   }
 
 
