@@ -18,37 +18,18 @@ $('.bottom-container').on('click', '.down-vote', voteDown);
 
 $('.bottom-container').on('click', '.completed-btn', saveCompleted);
 
-$('.show-completed').on('click', showCompletedTODO);
+$('.show-completed').on('click', showCompletedToDos);
 
 //****Functions****
 
-$(document).ready(onLoad);
+$(document).ready(function (){
+  displayCards(false, 10);
+});
 
-function onLoad (toDo) {
-  console.log(toDo);
-  searchToDos ();
-  if (toDo.completed) {
-    $(`#${toDo.id}`).addClass('toggle-display');
 
-  }
+function showCompletedToDos() {
+  displayCards(true);
 }
-
-// run search, this displays all 
-// filter from search 
-// on load toggle class 
-// simliar to todoCardTemplate without adding class at the end 
-// 
-
-function showCompletedTODO () {
-  searchToDos ();
-}
-
-// function showCompletedTODO () { 
-//   $('article').each( function (index, completedElement) {
-//     $('article').removeClass ('toggle-display');
-//     console.log("I am this",this);
-//   });
-// }
 
 Card.prototype.toggleCompleted = function() {
   this.completed = !this.completed;
@@ -244,3 +225,72 @@ function searchToDos() {
     $('.bottom-container').empty();
     renderCards(results);
 };
+
+function displayCards(completed, amount) {
+  var cards = Card.findAll();
+  var results = cards.filter(function(card) {
+      return card.completed === completed;
+    });
+  if (amount) {   
+    var results = results.splice(-amount);
+  }
+  $('.bottom-container').empty();
+  renderCards(results);
+}
+
+function displayCardsByQuality(qualityIndex) {
+  var cards = Card.findAll();
+  var results = cards.filter(function(card) {
+      return card.qualityIndex === qualityIndex;
+    });
+  $('.bottom-container').empty();
+  renderCards(results);
+}
+
+$('.filter-none').on('click', function() {
+  displayCardsByQuality(0);
+})
+
+$('.filter-low').on('click', function() {
+  displayCardsByQuality(1);
+})
+
+$('.filter-normal').on('click', function() {
+  displayCardsByQuality(2);
+})
+
+$('.filter-high').on('click', function() {
+  displayCardsByQuality(3);
+})
+
+$('.filter-critical').on('click', function() {
+  displayCardsByQuality(4);
+})
+
+// function displayFirstTen() {
+//   var cards = Card.findAll();
+//   var results = cards.filter(function(card) {
+//       return card.completed === false;
+//     });
+//   var lastTen = results.splice(-10);
+//       $('.bottom-container').empty();
+//   renderCards(lastTen);
+// }
+
+// function displayAllCompleted() {
+//   var cards = Card.findAll();
+//   var results = cards.filter(function(card) {
+//       return card.completed === true;
+//     });
+//       $('.bottom-container').empty();
+//   renderCards(lastTen);
+// }
+
+// function displayAllNotCompleted() {
+//   var cards = Card.findAll();
+//   var results = cards.filter(function(card) {
+//       return card.completed === false;
+//     });
+//       $('.bottom-container').empty();
+//   renderCards(lastTen);
+// }
