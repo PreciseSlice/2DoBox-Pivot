@@ -109,19 +109,19 @@ input::placeholder {
   margin: 17px auto;
 }
 
-.clear-all-button, .show-completed {
+.clear-all-button, .show-completed, .show-all {
   background: #6D6E71;
   border: none;
   color: #FFFFFF;
   font-size: 100%;
   height: 30.6px;
   outline: none;
-  width: 248px;
+  width: 158px;
 }
 
 
 
-.clear-all-button:hover, .show-completed:hover {
+.clear-all-button:hover, .show-completed:hover, .show-all:hover {
   background: #EF4136;
   color: #FFFFFF;
   cursor: pointer;
@@ -358,7 +358,7 @@ h3 {
     margin: auto;
   }
 
-  .clear-all-button, .show-completed {
+  .clear-all-button, .show-completed, .show-all {
     display: block;
     font-size: 100%;
     height: 30.6px;
