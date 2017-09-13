@@ -20,31 +20,37 @@ $('.bottom-container').on('click', '.completed-btn', saveCompleted);
 
 $('.show-completed').on('click', showCompletedToDos);
 
+$('.show-all').on('click', showAllToDos);
+
 $('.filter-none').on('click', function() {
   displayCardsByQuality(0);
-})
+});
 
 $('.filter-low').on('click', function() {
   displayCardsByQuality(1);
-})
+});
 
 $('.filter-normal').on('click', function() {
   displayCardsByQuality(2);
-})
+});
 
 $('.filter-high').on('click', function() {
   displayCardsByQuality(3);
-})
+});
 
 $('.filter-critical').on('click', function() {
   displayCardsByQuality(4);
-})
+});
 
 //****Functions****
 
 $(document).ready(function (){
   displayCards(false, 10);
 });
+
+function showAllToDos () {
+  displayCards(false);
+}
 
 function showCompletedToDos() {
   displayCards(true);
