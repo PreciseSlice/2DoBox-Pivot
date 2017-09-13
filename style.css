@@ -1,11 +1,9 @@
 * {
-  outline-color: #00A79D;
+  outline-color: #00a79d;
   transition: opacity .3s ease-in-out;
   transition: background-color .3s ease-in-out;
 
 }
-
-
 
 body {
   margin: auto;
@@ -19,12 +17,12 @@ body {
 
 h1 {
   color: #fff;
-  opacity: .9;
   font-family: "Roboto Slab", serif;
   font-size: 45px;
   font-weight: bold;
   margin-bottom: 0;
   margin-top: 0;
+  opacity: .9;
   padding-bottom: 20px;
   padding-top: 30px;
   text-align: center;
@@ -32,8 +30,8 @@ h1 {
 
 .title-box-styling {
   color: #182d4c;
-  opacity: .8;
   font-family: "Roboto Slab", serif;
+  opacity: .8;
   text-align: center;
 }
 
@@ -50,7 +48,7 @@ input {
 }
 
 input::placeholder {
-  color: #A9B2B2;
+  color: #a9b2b2;
   filter: blur(.5px);
 }
 
@@ -69,14 +67,14 @@ input::placeholder {
 }
 
 .input-task::placeholder {
-  color: #A9B2B2;
+  color: #a9b2b2;
   filter: blur(.5px);
 }
 
 .save-button {
-  background: #00A79D;
+  background: #e9d697;
   border: none;
-  color: #FFFFFF;
+  color: #fff;
   display: block;
   font-size: 100%;
   height: 30.6px;
@@ -86,12 +84,12 @@ input::placeholder {
 }
 
 .save-button:disabled {
-  background: #d3d3d3;
+  background: #b4b5b7;
 }
 
 .save-button:hover {
-  background: #045E55;
-  color: #FFFFFF;
+  background: #e0c46a;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -102,37 +100,43 @@ input::placeholder {
 }
 
 .button-container {
-  width: 512px;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
-  margin: 17px auto;
+  margin: 20px auto;
+  width: 512px;
 }
 
 .clear-all-button, .show-completed, .show-all {
-  background: #6D6E71;
+  background: #839cc1;
   border: none;
-  color: #FFFFFF;
+  color: #fff;
   font-size: 100%;
   height: 30.6px;
   outline: none;
   width: 158px;
 }
 
-
-
 .clear-all-button:hover, .show-completed:hover, .show-all:hover {
-  background: #EF4136;
-  color: #FFFFFF;
+  background: #59769e;
+  color: #fff;
   cursor: pointer;
 }
 
+.clear-all-button {
+  background: #364c6d;
+}
+
+.clear-all-button:hover {
+  background-color: #cb4b57;
+}
+
  h2 {
-  color: #6D6E71;
+  color: #6d6e71;
   display: inline-block;
   font-family: "Roboto Slab", serif;
-  margin-bottom: 0;
   margin: auto;
+  margin-bottom: 0;
   margin-top:  20px;
   width: 470px;
 }
@@ -141,12 +145,12 @@ input::placeholder {
   background-color: transparent;
   background-image: url(images/delete.svg);
   border: none;
+  cursor: pointer;
   height: 30px;
-  margin-top: 4px;
   margin-left: 4px;
+  margin-top: 4px;
   outline: none;
   width: 30px;
-  cursor: pointer;
 }
 
 .delete:hover {
@@ -168,7 +172,7 @@ input::placeholder {
 }
 
 .output-task{
-  color: #6D6E71;
+  color: #6d6e71;
   font-family: "Open Sans";
   font-size: 18px;
   margin-top: 10px;
@@ -179,11 +183,11 @@ input::placeholder {
   background-color: transparent;
   background-image: url(images/downvote.svg);
   border: none;
+  cursor: pointer;
   height: 30px;
   margin-left: 1%;
   outline: none;
   width: 30px;
-  cursor: pointer;
 }
 
 .down-vote:hover{
@@ -191,12 +195,12 @@ input::placeholder {
 }
 
 .quality, .level {
-  color: #6D6E71;
+  bottom: 5px;
+  color: #6d6e71;
   display: inline-block;
   font-family: "Open Sans", sans-serif;
   margin-top: 0;
   position: relative;
-  bottom: 5px;
 }
 
 .quality {
@@ -227,20 +231,20 @@ article {
 }
 
 h3 {
-  text-align: center;
-  position: relative;
   bottom: 7px;
   color: #ccc;
+  position: relative;
+  text-align: center;
 }
 
 
 
 .arrow-container {
-  width: 444px;
-  display: flex;
-  margin: -13px auto;
-  justify-content: space-around;
   align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin: -13px auto;
+  width: 444px;
 }
 
 .arrows {
@@ -252,22 +256,22 @@ h3 {
 }
 
 .filter-container {
-  width: 512px;
-  margin: auto;
   display: flex;
   justify-content: space-between;
+  margin: auto;
+  width: 512px;
 }
 
 .filter-container button {
-  cursor: pointer;
-  width: 84px;
-  color: #fff;
-  margin: 0 8px 8px 8px;
   border: none;
-  height: 30.6px;
+  color: #fff;
+  cursor: pointer;
   font-size: 100%;
+  height: 30.6px;
+  margin: 0 8px 8px 8px;
   opacity: .7;
   transition: opacity .3s ease-in-out;
+  width: 84px;
 }
 
 .filter-container button:hover {
@@ -296,18 +300,18 @@ h3 {
 }
 
 .completed-btn {
+  background: none;
+  border: none;
+  color: #cb4b57;
   float: right;
   font-size: 100%;
   height: 30.6px;
-  border: none;
-  background: none;
-  color: #cb4b57;
   opacity: .5;
 }
 
 .completed-btn:hover {
-  opacity: 1;
   cursor: pointer;
+  opacity: 1;
 }
 
 .completed-btn:focus, .completed:active, .completed:visited {
@@ -354,8 +358,8 @@ h3 {
 
   .button-container {
     flex-direction: column;
-    width: 276px;
     margin: auto;
+    width: 276px;
   }
 
   .clear-all-button, .show-completed, .show-all {
@@ -422,6 +426,7 @@ h3 {
   }
 
   .arrow-container {
+    margin: 0 auto -7px;
     width: 289px;
   }
 
@@ -431,16 +436,16 @@ h3 {
 
   .small-arrows {
     display: block;
-    width: 17px;
     position: relative;
     top: 7px;
+    width: 17px;
   }
 
   .completed-btn {
     display: block;
     float: none;
-    text-align: right;
     margin: -15px auto 12px;
+    text-align: right;
 
   }
 
