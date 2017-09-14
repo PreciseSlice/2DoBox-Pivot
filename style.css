@@ -2,7 +2,6 @@
   outline-color: #3774cd;
   transition: opacity .3s ease-in-out;
   transition: background-color .3s ease-in-out;
-
 }
 
 body {
@@ -169,7 +168,7 @@ input::placeholder {
   background-image: url(images/upvote-hover.svg);
 }
 
-.output-task{
+.output-task {
   color: #6d6e71;
   font-family: "Open Sans";
   font-size: 18px;
@@ -188,7 +187,7 @@ input::placeholder {
   width: 30px;
 }
 
-.down-vote:hover{
+.down-vote:hover {
   background-image: url(images/downvote-hover.svg);
 }
 
@@ -316,10 +315,6 @@ h3 {
   outline-color: #fff;
 }
 
-
-
-
-
 @media (max-width:600px) {
   html {
     height: 100%;
@@ -444,8 +439,5 @@ h3 {
     float: none;
     margin: -15px auto 12px;
     text-align: right;
-
   }
-
-
 }
